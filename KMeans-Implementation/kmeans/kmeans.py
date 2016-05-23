@@ -1,5 +1,4 @@
 import numpy as np
-from sklearn import datasets
 import random
 import hashlib
 
@@ -95,6 +94,15 @@ class Kmeans(object):
             else:
                 hash_before = hash_after
 
+    def predict(self, new_data):
+        if self.data is not None:
+            preds = np.zeros(len(new_data))
+            for row, vec in enumerate(new_data):
+                # Update results (classes of observations in data)
+                preds[row] = np.argmin(self.dist_func(vec, self.centroids))
+            return preds
+        return None
+
     def __repr__(self):
         if self.data is None:
             return "Kmeans model not yet fit"
@@ -126,16 +134,3 @@ class Kmeans(object):
             # euclidean distance
             scores[row] = np.sqrt(np.sum(self.data[row] - self.centroids[int(self.results[row])])**2)
         return np.sum(scores)
-
-
-
-
-
-
-if __name__ == "__main__":
-    print "Kmeans!"
-    data = datasets.load_iris().data
-    mod = Kmeans(score=True)
-    print mod
-    mod.fit(data)
-    print mod
