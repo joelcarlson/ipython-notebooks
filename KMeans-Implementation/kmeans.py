@@ -22,8 +22,9 @@ class Kmeans(object):
 
     Usage:
     KmeansModel = Kmeans()
-    KmeansFit = KmeansModel.fit(train_X, train_y)
-    KmeansPredictions = KmeansFit(test_X)
+    KmeansModel.fit(data)
+    print Kmeans
+    predictions = KmeansModel.results
     '''
     def __init__(self, k=10, num_iter=100, dist_func=euclidean_dist, random_state=10, score=False):
         """
@@ -42,7 +43,7 @@ class Kmeans(object):
             random state to pass in to random.seed()
         score: boolean
             compute the sum of squared errors at each iteration
-\
+
         Notes
         -----
         Regardless of num_iter, the algorithm will end if the classes do not change
@@ -63,7 +64,7 @@ class Kmeans(object):
         -----------
         data: array or sparse matrix, shape (n_samples, n_features)
             The data to find centroids for
-\
+
         Notes
         -----
         Selects initial cluster centers by randomly sampling
