@@ -111,7 +111,7 @@ ax2.set_title('Actual Clusters');
 ```
 
 
-![png](figs/output_18_0.png)
+![png](figs/clusters.png)
 
 
 Finally, we can visualize the convergence of the algorithm by using the `score` parameter. This will calculate the sum of the squared error at each iteration:
@@ -141,4 +141,4 @@ plt.xlabel("Iteration Number");
 ```
 
 
-![png](figs/output_21_0.png)
+![png](figs/convergence.png)
