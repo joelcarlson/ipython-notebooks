@@ -72,8 +72,8 @@ model
 
 
     Kmeans model fit!        
-     Final SSE: 88.121         
-     Converged in: 3 iterations
+     Final SSE: 93.528         
+     Converged in: 7 iterations
 
 
 
@@ -88,7 +88,7 @@ preds[1:10]
 
 
 
-    array([ 2.,  2.,  1.,  2.,  2.,  2.,  1.,  2.,  0.])
+    array([ 0.,  0.,  1.,  0.,  0.,  2.,  1.,  1.,  2.])
 
 
 
@@ -102,7 +102,6 @@ import pandas as pd
 %matplotlib inline
 ```
 
-
 ```python
 f, (ax1, ax2) = plt.subplots(1, 2, sharey=True, figsize=(14, 6))
 ax1.scatter(x=X_train[:,0], y=X_train[:,1], c=model.results, cmap="viridis")
@@ -113,3 +112,33 @@ ax2.set_title('Actual Clusters');
 
 
 ![png](figs/output_18_0.png)
+
+
+Finally, we can visualize the convergence of the algorithm by using the `score` parameter. This will calculate the sum of the squared error at each iteration:
+
+
+```python
+model = kmeans.Kmeans(score=True)
+model.fit(X)
+model
+```
+
+
+
+
+    Kmeans model fit!        
+     Final SSE: 52.542         
+     Converged in: 8 iterations
+
+
+
+
+```python
+plt.figure(figsize=(12,4))
+plt.plot(range(8), model.iterscore[1:9])
+plt.ylabel("Sum of Squared Errors")
+plt.xlabel("Iteration Number");
+```
+
+
+![png](figs/output_21_0.png)
