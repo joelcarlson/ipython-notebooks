@@ -1,7 +1,7 @@
 
 ## Object-oriented KMeans Clustering implementation
 
-In this repo is an implementation of the KMeans clustering algorithm using an object oriented approach, vaguely in the style of **SKlearn**. View the actual code [here](https://github.com/joelcarlson/ipython-notebooks/blob/master/KMeans-Implementation/kmeans/kmeans.py).
+In this repo is an implementation of the KMeans clustering algorithm using an object oriented approach, vaguely in the style of **SKlearn**. View the actual code [here](https://github.com/joelcarlson/ipython-notebooks/blob/master/KMeans_Implementation/kmeans/kmeans.py).
 
 The KMeans algorithm is an unsupervised learning technique for clustering similar data points.
 
@@ -22,7 +22,7 @@ This algorithm is then repeated a given number of times, or until the algorithm 
 
 ```python
 # Import the code!
-from kmeans import kmeans 
+from kmeans import kmeans
 
 from sklearn import datasets
 from sklearn.cross_validation import train_test_split
