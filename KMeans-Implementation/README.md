@@ -21,9 +21,11 @@ This algorithm is then repeated a given number of times, or until the algorithm 
 
 
 ```python
+# Import the code!
+from kmeans import kmeans 
+
 from sklearn import datasets
 from sklearn.cross_validation import train_test_split
-from kmeans import kmeans
 ```
 
 
