@@ -40,11 +40,10 @@ class InterviewMatch(object):
 
 		"""
 
-		for i in xrange(10):
-			for student in self.students:
-				for company in self.companies:
-					#print company
-					company.try_adding_student(student)
+		for student in self.students:
+			for company in self.companies:
+				#print company
+				company.try_adding_student(student)
 		self.fit_complete = True
 
 	def __str__(self):

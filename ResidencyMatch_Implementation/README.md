@@ -13,15 +13,15 @@ The companies do not have access to the students they will interview, which is a
 
 The code for the algorithm is broken up into 3 separate classes: `Student`, `Company` and `InterviewMatch`.
 
-#### Student Class
+#### Student Class / [link](https://github.com/joelcarlson/ipython-notebooks/tree/master/ResidencyMatch_Implementation/InterviewMatch/classes/student.py)
 
 The Student class is implemented in `/InterviewMatch/classes/student.py`. It is initialized with a student name, and a list of company names (strings) in rank order. The class stores a dictionary which contains, for each company the student ranked, the students rank for the company, and a jittered value for the rank. The jittering is done as a tie breaker mechanism - in this way if two students have chosen the same rank for a given company, the one with the luckier jitter result wins.
 
-#### Company Class
+#### Company Class /[link](https://github.com/joelcarlson/ipython-notebooks/tree/master/ResidencyMatch_Implementation/InterviewMatch/classes/company.py)
 
 The Company class is implemented in `/InterviewMatch/classes/company.py`. This class holds the interview slots for each company. Interview slots are modeled as an `OrderedDict()`, and students are placed in slots based on their (jittered) ranks. If a company has empty slots then a student is placed in automatically without regard to their ranking. When a student with a lower (preferred) ranking is attempting to be slotted in, the student who has given the lowest ranking is removed.
 
-#### InterviewMatch Class
+#### InterviewMatch Class / [link](https://github.com/joelcarlson/ipython-notebooks/tree/master/ResidencyMatch_Implementation/InterviewMatch/InterviewMatch.py)
 
 The InterviewMatch class is implemented in `/InterviewMatch/InterviewMatch.py`. Initialized with a list of students and a list of companies, it simply places the students in the companies.
 
