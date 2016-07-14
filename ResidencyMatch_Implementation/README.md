@@ -114,8 +114,8 @@ print matcher
     
     Apple
     Slot 0: Triston (0)
-    Slot 1: Ryan (2)
-    Slot 2: Andy (0)
+    Slot 1: Andy (0)
+    Slot 2: Ryan (2)
     
     Microsoft
     Slot 0: Triston (1)
