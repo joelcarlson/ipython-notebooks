@@ -40,39 +40,44 @@ class InterviewMatch(object):
 
 		"""
 
-		for student in self.students:
-			for company in self.companies:
-				print company
-				company.try_adding_student(student)
+		for i in xrange(10):
+			for student in self.students:
+				for company in self.companies:
+					#print company
+					company.try_adding_student(student)
 		self.fit_complete = True
 
 	def __str__(self):
 		if self.fit_complete:
 			company_str = ''.join(["{}".format(company) for company in companies])
-			return "Results" + "\n============\n" + company_str
+			return "Results\n============\n{}".format(company_str)
+		else:
+			student_str = ''.join(["{}".format(student) for student in students])
+			return "Student Preferences\n============\n{}".format(student_str)
 
 
 
 if __name__ == "__main__":
 	random.seed(1)
 	company_list = ["Oakley", "Reddit", "Burton", "Google", "Apple", "Microsoft"]
-	student_list = ["Joel", "Andy", "Ryan", "Triston"]
+	student_list = ["Joel", "Rhia", "Andy", "Ryan", "Triston", "Lorin"]
 
 	# Create list of Student objects
 	students = []
 	for student in student_list:
-		random.shuffle(company_list)
-		students.append(Student(student, ranks=company_list))
+		comps = random.sample(company_list, 6)
+		students.append(Student(student, ranks=comps))
 
 
 	# Create list of Company objects
 	companies = []
 	for company in company_list:
-		companies.append(Company(company, available_slots=5))
+		companies.append(Company(company, available_slots=3))
 	companies.append
 
 	# Initialize and run matching algorithm
 	matcher = InterviewMatch(students, companies)
+	print matcher
 	matcher.fit()
 
 	# Check results

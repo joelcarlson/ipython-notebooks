@@ -24,10 +24,11 @@ class Student(object):
 			self.student_name = student_name
 
 		# Convert ranks to dict with rank value and jitter
+		# Jitter is used as a simple method for breaking ties in ranks
 		self.ranks = ranks
 		self.rank_dict = {company:{"student_name":self.student_name,
-							   "student_rank":rank ,
-		                       "student_jitter_rank":rank + random.gauss(0,0.1)}
+							       "student_rank":rank ,
+		                           "student_jitter_rank":rank + random.gauss(0,0.1)}
 		              for rank, company in enumerate(ranks)}
 
 	def get_student_info(self, company_name):
@@ -41,4 +42,4 @@ class Student(object):
 			return self.rank_dict.get(company_name)
 
 	def __str__(self):
-		return "Name: {} \nRanks: {}".format(self.student_name, self.ranks)
+		return "Name:  {} \nRanks: {}\n\n".format(self.student_name, self.ranks)

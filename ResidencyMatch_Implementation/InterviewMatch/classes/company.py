@@ -1,5 +1,6 @@
 import random
 import string
+from collections import OrderedDict
 from student import Student
 
 class Company(object):
@@ -32,9 +33,10 @@ class Company(object):
 		self.available_slots = range(available_slots)
 		# Define the slots dictionary
 		# Access via slots[slot_number][s]	
-		self.slots = {n:{"student_name":None,
+		# Ordered so that we can use it as a stack later
+		self.slots = OrderedDict({n:{"student_name":None,
 						 "student_rank":None,
-						 "student_jitter_rank":float("inf")} for n in xrange(available_slots)}
+						 "student_jitter_rank":float("inf")} for n in xrange(available_slots)})
 
 
 	def _student_already_in(self, student):
@@ -68,13 +70,16 @@ class Company(object):
 				# if a student is being bumped you need to check the ranks of other
 				# students...
 				if len(self.available_slots) > 0:
-					pass
-					#del self.available_slots[slot]
-				for slot in self.slots:
-					if (student_info["student_jitter_rank"] < self.slots[slot]["student_jitter_rank"])\
-					and not self._student_already_in(student):
-						self.slots[slot] = student_info
-						break
+					first_available_slot = self.available_slots[0]
+					self.slots[first_available_slot] = student_info
+					del self.available_slots[0]
+
+				else:
+					for slot in self.slots:
+						if (student_info["student_jitter_rank"] < self.slots[slot]["student_jitter_rank"])\
+						and not self._student_already_in(student):
+							self.slots[slot] = student_info
+							break
 
 	def __str__(self):
 		name_str = self.company_name
