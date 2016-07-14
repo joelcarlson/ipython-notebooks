@@ -49,10 +49,10 @@ class InterviewMatch(object):
 
 	def __str__(self):
 		if self.fit_complete:
-			company_str = ''.join(["{}".format(company) for company in companies])
+			company_str = ''.join(["{}".format(company) for company in self.companies])
 			return "Results\n============\n{}".format(company_str)
 		else:
-			student_str = ''.join(["{}".format(student) for student in students])
+			student_str = ''.join(["{}".format(student) for student in self.students])
 			return "Student Preferences\n============\n{}".format(student_str)
 
 
@@ -60,7 +60,7 @@ class InterviewMatch(object):
 if __name__ == "__main__":
 	random.seed(1)
 	company_list = ["Oakley", "Reddit", "Burton", "Google", "Apple", "Microsoft"]
-	student_list = ["Joel", "Rhia", "Andy", "Ryan", "Triston", "Lorin"]
+	student_list = ["Joel", "Rhia", "Dave", "Andy", "Ryan", "Triston", "Lorin"]
 
 	# Create list of Student objects
 	students = []
