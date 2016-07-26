@@ -15,8 +15,9 @@ Time complexity ~O(N)
 Usage
 ------
 
-Decide on the length of the list, N, 
-and run perm(N)
+Decide on the length of the list, N
+run:
+permutation(N)
 
 Returns
 ------
