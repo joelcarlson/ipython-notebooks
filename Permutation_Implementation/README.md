@@ -27,4 +27,4 @@ permutation.permutation(N)
 
 Here is a visualization of the algorithm in action, permuting a list of 4 (each color represents a digit):
 
-<img src="https://raw.githubusercontent.com/joelcarlson/GravityImageFilter/master/output/source.png" />
+<img src="https://github.com/joelcarlson/ipython-notebooks/blob/master/Permutation_Implementation/figs/perms_four.gif" />
