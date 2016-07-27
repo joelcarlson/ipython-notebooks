@@ -25,8 +25,12 @@ permutation.permutation(N)
          [2, 1, 0]]
 
 
-Here is a visualization of the algorithm in action, first permuting a list of 3 (each color represents a digit), then a list of 4, and finally a very cluttered visualization of a list of 5:
+Here is a visualization of the algorithm permutating a list of 3 (each color represents a digit):
 
 <img src="https://github.com/joelcarlson/ipython-notebooks/blob/master/Permutation_Implementation/figs/perms_three.gif" />
 
+A list of 4:
+
 <img src="https://github.com/joelcarlson/ipython-notebooks/blob/master/Permutation_Implementation/figs/perms_four.gif" />
+
+Finally, a very cluttered list of 5:

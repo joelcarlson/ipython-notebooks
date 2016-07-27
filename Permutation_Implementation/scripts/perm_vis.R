@@ -29,34 +29,37 @@ pal <- c("#99B898", "#FECEA8", "#FF847C", "#E84A5F", "#2A363B")
 library(dplyr); library(ggplot2); library(reshape2);
 library(tweenr); library(ggthemes); library(gganimate)
 
-perms <- read.csv("perms.csv", header=FALSE)
-perms <- as.data.frame(lapply(perms, as.factor))
-perms$iter <- seq(1,nrow(perms))
-perms <- melt(perms, id.vars=c("iter"))
+create_perm_ani <- function(csv_path, gif_path, size=1.8){
+  perms <- read.csv(csv_path, header=FALSE)
+  perms <- as.data.frame(lapply(perms, as.factor))
+  perms$iter <- seq(1,nrow(perms))
+  perms <- melt(perms, id.vars=c("iter"))
+  perms$ease <- 'sine-in-out'
+  perms$time <- perms$iter
+  
+  colnames(perms) <- c("x", "group", "y", "ease", "time")
+  perms$y <- as.numeric(perms$y)
+  perms$group <- as.numeric(perms$group)
+  
+  perms_dt <- tween_elements(perms, 'time', 'group', 'ease', nframes = 384)
+  
+  p <- ggplot(data=perms_dt, aes(x=x, y=y, col=.group,frame=.frame, cumulative = TRUE)) +
+    geom_path(size=size, lineend="round", linejoin="round", alpha=0.9) +
+    theme_fivethirtyeight() +
+    guides(col=FALSE) +
+    coord_cartesian(xlim=c(1,max(perms$time))) +
+    scale_color_manual(values=c(pal[5],pal[3],pal[1],pal[4], pal[2])) 
+  
+  animation::ani.options(interval = 1/24, ani.width=960, ani.height=480)
+  gg_animate(p, gif_path, title_frame = F)
+  
+}
 
-ggplot(data=perms, aes(x=iter, y=value, col=variable, group=variable)) +
-  geom_line(size=1.8, lineend="round", linejoin="round", alpha=0.9) +
-  theme_fivethirtyeight() +
-  guides(col=FALSE) +
-  coord_cartesian(xlim=c(0,max(perms$iter))) +
-  scale_color_manual(values=c(pal[5],pal[3],pal[1],pal[4]))
+# Create 3 level perm viz
+create_perm_ani("perms_3.csv", "perms_three.gif")
 
-perms_cp <- perms
-perms_cp$ease <- 'sine-in-out'
-perms_cp$time <- perms_cp$iter
+# Create 4 level perm viz
+create_perm_ani("perms.csv", "perms_four.gif")
 
-colnames(perms_cp) <- c("x", "group", "y", "ease", "time")
-perms_cp$y <- as.numeric(perms_cp$y)
-perms_cp$group <- as.numeric(perms_cp$group)
-
-perms_dt <- tween_elements(perms_cp, 'time', 'group', 'ease', nframes = 384)
-
-p <- ggplot(data=perms_dt, aes(x=x, y=y, col=.group,frame=.frame, cumulative = TRUE)) +
-  geom_path(size=1.8, lineend="round", linejoin="round", alpha=0.9) +
-  theme_fivethirtyeight() +
-  guides(col=FALSE) +
-  coord_cartesian(xlim=c(1,max(perms_cp$time))) +
-  scale_color_manual(values=c(pal[5],pal[3],pal[1],pal[4])) 
-
-animation::ani.options(interval = 1/24, ani.width=960, ani.height=480)
-gg_animate(p, 'perms_four_blank.gif', title_frame = F)
+# Create 5 level perm viz
+create_perm_ani("perms_5.csv", "perms_five.gif", size=0.8)
