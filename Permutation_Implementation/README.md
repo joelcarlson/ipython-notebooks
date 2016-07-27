@@ -34,3 +34,5 @@ A list of 4:
 <img src="https://github.com/joelcarlson/ipython-notebooks/blob/master/Permutation_Implementation/figs/perms_four.gif" />
 
 Finally, a very cluttered list of 5:
+
+<img src="https://github.com/joelcarlson/ipython-notebooks/blob/master/Permutation_Implementation/figs/perms_five.gif" />
