@@ -24,3 +24,7 @@ permutation.permutation(N)
          [2, 0, 1], 
          [2, 1, 0]]
 
+
+Here is a visualization of the algorithm in action, permuting a list of 4 (each color represents a digit):
+
+<img src="https://raw.githubusercontent.com/joelcarlson/GravityImageFilter/master/output/source.png" />
